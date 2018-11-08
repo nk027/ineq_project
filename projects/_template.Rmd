@@ -1,0 +1,49 @@
+---
+title: "Einkommensverteilung in Österreich"
+subtitle: "Eine Analyse"
+author: "Nikolas Kuschnig & Casper Engelen"
+abstract: "This paper assesses Austrian income inequality empirically via EU-SILC data. Multiple indicators are calculated, analysed and compared in the hope of creating a comprehensive overview of Austrian income inequality."
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: 
+  pdf_document:
+    includes: 
+      in_header: header.tex
+bibliography: references.bib
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+income_inequality <- important <- 0
+```
+
+# Einführung
+
+```{r}
+income_inequality == important
+```
+
+![Einkommen pro Sekunde, [xkcd.com](https://what-if.xkcd.com/118/)](img/comparison.png){width=40%}
+
+# Methodologie
+
+## Daten
+Im Rahmen der *European Union Statistics on Income and Living Conditions* (EU-SILC) werden zahlreiche Daten erhoben, die im Rahmen der Ungleichheitsforschung häufig Anwendung finden [@marmot2010fair; @lancee2012income]. Die Einkommenserfassung in der Erhebung umfassend, wenn auch an den Rändern untererfasst [@humer2013bedeutung, p. 571].
+
+## Indikatoren
+Verwendete Indikatoren sind:
+
+- Gini Koeffizient
+- Quantile-Share-Ratios
+- Durschnittliche Einkommen
+
+# Ergebnisse
+
+Österreich ist ok.
+
+```{r, echo=FALSE, fig.cap="Nice figure, no?"}
+plot(rnorm(5), rnorm(5))
+```
+
+
+# Literatur
