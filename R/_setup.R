@@ -1,27 +1,59 @@
+# Setup -------------------------------------------------------------------
+
 issue_1_dealt_with <- FALSE
+country <- "NL"
+year <- 2013
+
+
 # Dependencies ------------------------------------------------------------
 
 library(dplyr)
 
+
+# Prepare Data ------------------------------------------------------------
+
 # Connect to the PostgreSQL database
 if(issue_1_dealt_with) {
-  pg <- src_postgres(...)
+  pg <- src_postgres(dbname = "dbname", host = "host",
+                     user = "user", password = "password",
+                     options = "options")
 } else {
   stop("Please deal with Issue #1 ")
 }
 
 
-# Download some data
-silc.d <- tbl(pg, "c11d") %>% filter(db020 == "AT") %>%
-  select(db010, db020, db030, db040, db090) %>% collect()
+# Download data
+silc.p <- tbl(pg, "pp") %>%
+  filter(pb020 %in% country & pb010 == year) %>%
+  select(pb020, pb030, pb040, py010g, px030) %>%
+  collect(n = Inf)
 
-silc.p <- tbl(pg, "c11p") %>% filter(pb020 == "AT") %>%
-  select(pb020, pb030, px030, pb150, py010g, py050g, pl060, pl100,
-         pl073, pl074, pl075, pl076, pb140, pe040) %>% collect(n = Inf)
+silc.h <- tbl(pg, "hh") %>%
+  filter(hb020 %in% country & hb010 == year) %>%
+  select(hb020, hb030, hy010, hx010) %>%
+  collect()
 
-# Join the data
-silc.dp <- right_join(silc.d, silc.p,
-                      by = c('db020' = 'pb020', 'db030' = 'px030'))
+silc.d <- tbl(pg, "dd") %>%
+  filter(db020 %in% country & db010 == year) %>%
+  select(db010, db020, db030, db040, db090, px010) %>%
+  collect()
+
+# Create unique IDs for merging
+silc.p <- silc.p %>% mutate(id_h = paste0(pb020, px030))
+
+silc.h <- silc.h %>% mutate(id_h = paste0(hb020, hb030))
+
+silc.d <- silc.d %>% mutate(id_h = paste0(db020, db030))
+
+# Merge the datasets
+silc.pd <- left_join(silc.p, silc.d %>% select(id_h, db020, db090))
+
+silc.hd <- left_join(silc.h, silc.d)
 
 # Remove
-rm(silc.d, silc.p)
+rm(silc.p, silc.h, silc.d)
+
+
+# Fin ---------------------------------------------------------------------
+
+message("Prepared data for ", country, " in ", year, ".")
