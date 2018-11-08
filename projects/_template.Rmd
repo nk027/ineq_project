@@ -15,6 +15,8 @@ bibliography: references.bib
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 income_inequality <- important <- 0
+
+# source("../R/_setup.R")
 ```
 
 # Einführung
@@ -39,7 +41,7 @@ Verwendete Indikatoren sind:
 
 # Ergebnisse
 
-Österreich ist ok.
+**Österreich** ist ok.
 
 ```{r, echo=FALSE, fig.cap="Nice figure, no?"}
 plot(rnorm(5), rnorm(5))

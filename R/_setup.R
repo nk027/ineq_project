@@ -1,7 +1,7 @@
 # Setup -------------------------------------------------------------------
 
 issue_1_dealt_with <- FALSE
-country <- "NL"
+country <- "AT"
 year <- 2013
 
 
@@ -18,7 +18,7 @@ if(issue_1_dealt_with) {
                      user = "user", password = "password",
                      options = "options")
 } else {
-  stop("Please deal with Issue #1 ")
+  stop("Please deal with Issue #1.")
 }
 
 

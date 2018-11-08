@@ -1,6 +1,7 @@
 ### General ###
 *.pdf
-
+*.html
+other/
 
 ###
 ### Ignores generated at <https://gitignore.io> ###
