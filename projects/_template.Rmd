@@ -2,50 +2,95 @@
 title: "Einkommensverteilung in Österreich"
 subtitle: "Eine Analyse"
 author: "Nikolas Kuschnig & Casper Engelen"
-abstract: "This paper assesses Austrian income inequality empirically via EU-SILC data. Multiple indicators are calculated, analysed and compared in the hope of creating a comprehensive overview of Austrian income inequality."
+abstract: "Dieses Dokument stellt einige Funktionen von Rmarkdown vor und bietet eine simple Grundstruktur für Länder-Reports."
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output: 
   pdf_document:
+    toc: true
     includes: 
       in_header: header.tex
 bibliography: references.bib
 ---
 
+\newpage
+
+# Rmarkdown
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-income_inequality <- important <- 0
-
-# source("../R/_setup.R")
+cat("This is run but does not show up in the document.")
 ```
 
-# Einführung
+```{r, eval=FALSE}
+cat("This is not run, but does show up in the document.")
+```
+
+```{r echo=FALSE}
+cat("This does not show up in the document, but output does")
+```
 
 ```{r}
-income_inequality == important
+cat("This shows up in the document, output does as well.")
 ```
 
-![Einkommen pro Sekunde, [xkcd.com](https://what-if.xkcd.com/118/)](img/comparison.png){width=40%}
+<!-- Kommentare im Dokument -->
+
+Text gibt es *kursiv* und **fett**.
+
+LaTeX Formeln gibt es inline ($e = mc^2$) und auf einer eigenen Zeile:
+
+$$\hat{\beta} = (X'X)^{-1}X'Y$$
+
+![Bilder kann man einbinden](img/comparison.png){width=60%}
+
+[Links auch (Bild-Quelle)](https://what-if.xkcd.com/118/)
+
+Zitieren aus *BibTeX*:
+
+Im Rahmen der *European Union Statistics on Income and Living Conditions* (EU-SILC) werden zahlreiche Daten erhoben, die in der Ungleichheitsforschung häufig Anwendung finden [@marmot2010fair; @lancee2012income]. Zahlreiche Einkommen sind in der Erhebung inkludiert; diese sind aber an den Rändern untererfasst [@humer2013bedeutung, p. 571].
+
+Volle Zitate:
+
+> "Don't quote me on that."
+
+Listen ohne Zahlen:
+
+- Einkommen
+- Kapital
+
+Listen mit Zahlen:
+
+1. Zahlen
+3. Egal
+
+Simple Tabellen:
+
+|Country | Gini | Theil | QSR |
+| --- | --- | --- | --- |
+| AUT | 1 | 0.5 | NA |
+
+R-Plots mit Caption:
+
+```{r fig-rnorm, echo=FALSE, fig.cap="Nette Caption"}
+plot(rnorm(50), rnorm(50))
+```
+
+
+
+\newpage
+
+# Einführung
 
 # Methodologie
 
 ## Daten
-Im Rahmen der *European Union Statistics on Income and Living Conditions* (EU-SILC) werden zahlreiche Daten erhoben, die im Rahmen der Ungleichheitsforschung häufig Anwendung finden [@marmot2010fair; @lancee2012income]. Die Einkommenserfassung in der Erhebung umfassend, wenn auch an den Rändern untererfasst [@humer2013bedeutung, p. 571].
 
 ## Indikatoren
-Verwendete Indikatoren sind:
-
-- Gini Koeffizient
-- Quantile-Share-Ratios
-- Durschnittliche Einkommen
 
 # Ergebnisse
 
-**Österreich** ist ok.
-
-```{r, echo=FALSE, fig.cap="Nice figure, no?"}
-plot(rnorm(5), rnorm(5))
-```
 
 
 # Literatur
+
+<!-- Leer lassen, Referenzen aus .bib werden hier eingefügt -->
