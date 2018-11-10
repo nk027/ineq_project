@@ -368,3 +368,4 @@ TSWLatexianTemp*
 ### LaTeX Patch ###
 # glossaries
 *.glstex
+.Rproj.user
