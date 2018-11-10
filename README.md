@@ -14,9 +14,7 @@ Make sure to not let plain EU-SILC data end up on GitHub! This includes the cred
 Please stick with the existing folder structure and **create an issue** if something was not accounted for. The current structure is:
 
 - **reports**: Use a subfolder named after your country's [ISO 3166 ALPHA-3 code](https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste), for files *directly pertaining to your country*, i.e. your report, scripts for your data, your *BibTeX* file, images (in `img`), tables (in `tables`), et cetera.
-
 - **R**: The folder should be used for scripts that might be helpful to your colleagues (e.g. functions for preparing or plotting data). Be sure to name these files concisely and provide some documentation for the code.
-
 - **data**: This folder should be used for processed data that will be required later on. Use the *RDS* or *RData* formats and *tidy up your outputs* beforehand!
 
 
