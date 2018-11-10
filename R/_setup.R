@@ -1,13 +1,10 @@
 # Setup -------------------------------------------------------------------
 
-issue_1_dealt_with <- FALSE
-country <- "AT"
-year <- 2013
-
-
-# Dependencies ------------------------------------------------------------
-
 library(dplyr)
+issue_1_dealt_with <- FALSE
+if(!exists(c("country", "year"))) {
+  stop("Please specify country and year.")
+}
 
 
 # Prepare Data ------------------------------------------------------------
@@ -24,19 +21,19 @@ if(issue_1_dealt_with) {
 
 # Download data
 silc.p <- tbl(pg, "pp") %>%
-  filter(pb020 %in% country & pb010 == year) %>%
-  select(pb020, pb030, pb040, py010g, px030) %>%
+  filter(pb020 %in% country & pb010 %in% year) %>%
+  select(pb020, pb030, pb040, pb150, py010g, px010, px030, pl060, pl073, pl074, pl100, rx060) %>%
   collect(n = Inf)
 
 silc.h <- tbl(pg, "hh") %>%
-  filter(hb020 %in% country & hb010 == year) %>%
+  filter(hb020 %in% country & hb010 %in% year) %>%
   select(hb020, hb030, hy010, hx010) %>%
-  collect()
+  collect(n = Inf)
 
 silc.d <- tbl(pg, "dd") %>%
-  filter(db020 %in% country & db010 == year) %>%
+  filter(db020 %in% country & db010 %in% year) %>%
   select(db010, db020, db030, db040, db090, px010) %>%
-  collect()
+  collect(n = Inf)
 
 # Create unique IDs for merging
 silc.p <- silc.p %>% mutate(id_h = paste0(pb020, px030))
