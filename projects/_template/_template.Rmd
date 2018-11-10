@@ -83,8 +83,8 @@ plot(rnorm(50), rnorm(50))
 Potentiell weniger simple Tabellen:
 
 ```{r echo=FALSE, }
-table <- read.csv("../data/_template-table.csv")
-
+# Read CSV data, "../../" to look two levels upwards
+table <- read.csv("../../data/_template-table.csv")
 knitr::kable(table, caption = "Mit Optionen")
 ```
 
