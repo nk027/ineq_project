@@ -34,13 +34,13 @@ silc.pd.wage <- silc.pd.wage %>%
 # Indicators --------------------------------------------------------------
 
 # Share of population at risk of poverty
-
+#
 arpr(inc = silc.pd.inc$py010g, weights = silc.pd.inc$pb040, 
      breakdown = silc.pd.inc$pb020)
 arpr(inc = silc.hd.inc$hy010, silc.hd.inc$db090)
 
 # Gender Pay Gap
-
+#
 silc.pd.wage <- silc.pd.wage %>% 
   mutate(hwages = py010g / ((pl060 + pl100) * (pl073 + pl074) * 52 / 12),
          gender = factor(pb150, labels = c("Male", "Female")))
