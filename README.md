@@ -34,7 +34,7 @@ If you want to go further have a look at this [short guide](http://adv-r.had.co.
 
 1. Create a fork of this repository by clicking the *Fork* button in the top right
 2. Clone your forked repository with RStudio
-3. Add this repository as *upstream* by running: ´git remote add upstream https://github.com/nk027/ineq_project.git´
-4. Start
+3. Add this repository as *upstream* by running: `git remote add upstream https://github.com/nk027/ineq_project.git`
+4. Start off
 
 To update your fork with changes from this main repository run: `git pull upstream` or use GitHub's online interface for pull requests.
