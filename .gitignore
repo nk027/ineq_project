@@ -3,6 +3,9 @@
 *.html
 other/
 
+# Do not ignore
+!projects/_template/_template.pdf
+
 ###
 ### Ignores generated at <https://gitignore.io> ###
 ###
@@ -368,3 +371,4 @@ TSWLatexianTemp*
 ### LaTeX Patch ###
 # glossaries
 *.glstex
+.Rproj.user

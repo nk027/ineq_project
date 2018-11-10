@@ -12,53 +12,58 @@ output:
 bibliography: references.bib
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 \newpage
 
 # Rmarkdown
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-cat("This is run but does not show up in the document.")
+```{r, include=FALSE}
+cat("Ausgeführt, nichts angezeigt")
 ```
 
 ```{r, eval=FALSE}
-cat("This is not run, but does show up in the document.")
+cat("Nicht ausgeführt, angezeigt")
 ```
 
 ```{r echo=FALSE}
-cat("This does not show up in the document, but output does")
+cat("Ausgeführt, Output angezeigt")
 ```
 
 ```{r}
-cat("This shows up in the document, output does as well.")
+cat("Ausgeführt, alles angezeigt")
 ```
 
 <!-- Kommentare im Dokument -->
 
 Text gibt es *kursiv* und **fett**.
 
-LaTeX Formeln gibt es inline ($e = mc^2$) und auf einer eigenen Zeile:
+R-Code im Text: `r pi`
+
+LaTeX Formeln inline: ($e = mc^2$) und in groß:
 
 $$\hat{\beta} = (X'X)^{-1}X'Y$$
 
-![Bilder kann man einbinden](img/comparison.png){width=60%}
+![Bilder einfügen](img/comparison.png){width=60%}
 
-[Links auch (Bild-Quelle)](https://what-if.xkcd.com/118/)
+[Links einfügen (Bildquelle)](https://what-if.xkcd.com/118/)
 
 Zitieren aus *BibTeX*:
 
 Im Rahmen der *European Union Statistics on Income and Living Conditions* (EU-SILC) werden zahlreiche Daten erhoben, die in der Ungleichheitsforschung häufig Anwendung finden [@marmot2010fair; @lancee2012income]. Zahlreiche Einkommen sind in der Erhebung inkludiert; diese sind aber an den Rändern untererfasst [@humer2013bedeutung, p. 571].
 
-Volle Zitate:
+Block-Zitate:
 
 > "Don't quote me on that."
 
-Listen ohne Zahlen:
+Ungeordnete Listen:
 
 - Einkommen
 - Kapital
 
-Listen mit Zahlen:
+Geordnete Listen:
 
 1. Zahlen
 3. Egal
@@ -69,13 +74,23 @@ Simple Tabellen:
 | --- | --- | --- | --- |
 | AUT | 1 | 0.5 | NA |
 
-R-Plots mit Caption:
+R-Plots:
 
-```{r fig-rnorm, echo=FALSE, fig.cap="Nette Caption"}
+```{r fig-rnorm, echo=FALSE, fig.cap="Inklusive Optionen", fig.width=4}
 plot(rnorm(50), rnorm(50))
 ```
 
+Potentiell weniger simple Tabellen:
 
+```{r echo=FALSE, }
+table <- read.csv("../data/_template-table.csv")
+
+knitr::kable(table, caption = "Mit Optionen")
+```
+
+Horizontale Linien:
+
+---
 
 \newpage
 
