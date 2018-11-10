@@ -20,9 +20,9 @@ if(issue_1_dealt_with) {
 
 
 # Download data
-silc.p <- tbl(pg, "c13p") %>%
+silc.p <- tbl(pg, "pp") %>%
   filter(pb020 %in% country & pb010 %in% year) %>%
-  select(pb020, pb030, pb040, pb150, py010g, px010, px030, pl060, pl073, pl074, pl100) %>%
+  select(pb020, pb030, pb040, pb150, py010g, px010, px030) %>%
   collect(n = Inf)
 
 silc.h <- tbl(pg, "hh") %>%
@@ -33,6 +33,11 @@ silc.h <- tbl(pg, "hh") %>%
 silc.d <- tbl(pg, "dd") %>%
   filter(db020 %in% country & db010 %in% year) %>%
   select(db010, db020, db030, db040, db090, px010) %>%
+  collect(n = Inf)
+
+silc.r <- tbl(pg, "rr") %>% 
+  filter(rb020 %in% country & rb010 %in% year) %>%
+  select(rb010, rb020, rb030, rb050) %>%
   collect(n = Inf)
 
 # Create unique IDs for merging
