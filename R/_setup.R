@@ -22,7 +22,7 @@ if(issue_1_dealt_with) {
 # Download data
 silc.p <- tbl(pg, "pp") %>%
   filter(pb020 %in% country & pb010 %in% year) %>%
-  select(pb020, pb030, pb040, pb150, py010g, px010, px030) %>%
+  select(pb020, pb030, pb040, pb150, py010g, py050, px010, px030) %>%
   collect(n = Inf)
 
 silc.h <- tbl(pg, "hh") %>%
