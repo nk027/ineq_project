@@ -36,6 +36,6 @@ ppp.hd <- left_join(silc.hd, ppp, by = "hb020")
 # Calculate the income corrected for purchasing power parity
 # 1. multiply with the exchange rate (px010, hx010), then divide by ppp
 ppp.pd <- ppp.pd %>%
-  mutate(py010ppp = (py010g * px010) / values)
+  mutate(py010ppp = (py010g + py050) * px010 / values)
 ppp.hd <- ppp.hd %>%
-  mutate(hy010ppp = (hy010 * hx010) / values)
+  mutate(hy010ppp = hy010 * hx010 / values)
