@@ -18,11 +18,10 @@ if(issue_1_dealt_with) {
   stop("Please deal with Issue #1.")
 }
 
-
 # Download data
 silc.p <- tbl(pg, "pp") %>%
   filter(pb020 %in% country & pb010 %in% year) %>%
-  select(pb020, pb030, pb040, pb150, py010g, py050, px010, px030) %>%
+  select(pb020, pb030, pb040, pb150, py010g, py050n, px010, px030) %>%
   collect(n = Inf)
 
 silc.h <- tbl(pg, "hh") %>%
@@ -32,7 +31,7 @@ silc.h <- tbl(pg, "hh") %>%
 
 silc.d <- tbl(pg, "dd") %>%
   filter(db020 %in% country & db010 %in% year) %>%
-  select(db010, db020, db030, db040, db090, px010) %>%
+  select(db010, db020, db030, db040, db090) %>%
   collect(n = Inf)
 
 silc.r <- tbl(pg, "rr") %>% 
@@ -55,6 +54,13 @@ silc.hd <- left_join(silc.h, silc.d)
 # Remove
 rm(silc.p, silc.h, silc.d)
 
+# Create total personal income --------------------------------------------
+
+# Using the string py (contained in all income variables) calculating the total personal income. 
+# Ignoring the NA's.
+silc.pd <- silc.pd %>% mutate(
+  total.inc = rowSums(silc.pd[, grep("py", colnames(silc.pd))], na.rm = TRUE)
+) 
 
 # Fin ---------------------------------------------------------------------
 
