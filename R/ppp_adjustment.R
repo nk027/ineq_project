@@ -27,7 +27,8 @@ ppp <- ppp %>% filter(aggreg == "A01" &
 
 # Rename the country variable according to the EU-SILC convention
 colnames(ppp)[3] <- "pb020"
-colnames(ppp)[3] <- "hb020"
+ppp[6] <- ppp[3]
+colnames(ppp)[6] <- "hb020"
 
 # Merge the data
 ppp.pd <- left_join(silc.pd, ppp, by = "pb020")
