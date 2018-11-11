@@ -25,14 +25,9 @@ ppp <- ppp %>% filter(aggreg == "A01" &
                         na_item == "PPP_EU28" & 
                         time == "2013-01-01")
 
-# Rename the country variable according to the EU-SILC convention
-colnames(ppp)[3] <- "pb020"
-ppp[6] <- ppp[3]
-colnames(ppp)[6] <- "hb020"
-
 # Merge the data
-ppp.pd <- left_join(silc.pd, ppp, by = "pb020")
-ppp.hd <- left_join(silc.hd, ppp, by = "hb020")
+ppp.pd <- left_join(silc.pd, ppp, by = c("pb020" = "geo"))
+ppp.hd <- left_join(silc.hd, ppp, by = c("hb020" = "geo"))
 
 # Calculate the income corrected for purchasing power parity
 # 1. multiply with the exchange rate (px010, hx010), then divide by ppp

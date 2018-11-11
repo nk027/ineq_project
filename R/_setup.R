@@ -51,16 +51,13 @@ silc.pd <- left_join(silc.p, silc.d %>% select(id_h, db020, db090))
 
 silc.hd <- left_join(silc.h, silc.d)
 
-# Remove
-rm(silc.p, silc.h, silc.d)
 
 # Create total personal income --------------------------------------------
 
-# Using the string py (contained in all income variables) calculating the total personal income. 
-# Ignoring the NA's.
-silc.pd <- silc.pd %>% mutate(
-  total.inc = rowSums(silc.pd[, grep("py", colnames(silc.pd))], na.rm = TRUE)
-) 
+# Find string "py" (i.e. income variables) for summing up total personal income. 
+silc.pd <- silc.pd %>% 
+  mutate(total.inc = rowSums(silc.pd[, grep("py", colnames(silc.pd))], 
+                             na.rm = TRUE)) 
 
 # Fin ---------------------------------------------------------------------
 
