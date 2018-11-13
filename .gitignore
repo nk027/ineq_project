@@ -2,9 +2,11 @@
 *.pdf
 *.html
 other/
+data/
 
 # Do not ignore
 !projects/_template/_template.pdf
+!data/README.Md
 
 ###
 ### Ignores generated at <https://gitignore.io> ###
