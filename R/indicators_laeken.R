@@ -12,7 +12,8 @@ library(dplyr)
 country <- "CZ"
 year <- 2013
 
-# Source the Setup script to provide merged household and personal data
+# Source the Setup scripts to provide merged household and personal data
+source("R/_connection.R")
 source("R/_setup.R")
 
 

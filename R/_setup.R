@@ -1,22 +1,12 @@
 # Setup -------------------------------------------------------------------
 
 library(dplyr)
-issue_1_dealt_with <- FALSE
 if(!exists(c("country", "year"))) {
   stop("Please specify country and year.")
 }
 
 
 # Prepare Data ------------------------------------------------------------
-
-# Connect to the PostgreSQL database
-if(issue_1_dealt_with) {
-  pg <- src_postgres(dbname = "dbname", host = "host",
-                     user = "user", password = "password",
-                     options = "options")
-} else {
-  stop("Please deal with Issue #1.")
-}
 
 # Download data
 silc.p <- tbl(pg, "pp") %>%
