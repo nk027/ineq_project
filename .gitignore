@@ -3,10 +3,12 @@
 *.html
 other/
 data/
+*.Rproj
 
 # Do not ignore
 !projects/_template/_template.pdf
 !data/README.Md
+!ineq_project.Rproj
 
 ###
 ### Ignores generated at <https://gitignore.io> ###
