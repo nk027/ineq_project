@@ -6,7 +6,9 @@ This repository is used for organising the creation of income inequality profile
 
 ### Legal
 
-Make sure to not let plain EU-SILC data end up on GitHub! This includes the credentials to the Ineq-Institute's PostgreSQL instance.
+**Make sure to not let plain EU-SILC data end up on GitHub!**
+
+This includes the credentials to the Ineq-Institute's database. To connect to the database use the script `R/_connection.R` which requires you to input the password by hand (directly or via variable). Do no access this script from R Markdown - instead prepare your data in a separate script and store it locally in the `data` folder.
 
 
 ### Folder Structure
@@ -22,11 +24,12 @@ Please stick with the existing folder structure and **create an issue** if somet
 
 To keep code readable and thus easy to share and verify, try to adhere to some **basic rules**:
 
-- *File Names* are meaningful, end in `.R` and do not contain spaces (use `_` or `-`).
+- *File Names* are meaningful and do not contain spaces (use `_` or `-`).
 - *Objects* are named in a meaningful and readable way (e.g. `read_csv()` or `table_qsr`).
 - *Lines* should not exceed 80 characters (use *Show Margin* in RStudio).
 - *Spaces* are put around all operators and after commas (e.g. `c("this", 1 + 1)`).
 - *Comment* your code.
+- *Avoid* clutter by organising your workflow (separate scripts for separate tasks, [functions](http://adv-r.had.co.nz/Functions.html), etc.)
 
 If you want to go further have a look at this [short guide](http://adv-r.had.co.nz/Style.html) or the [extended tidyverse style guide](https://style.tidyverse.org/).
 
