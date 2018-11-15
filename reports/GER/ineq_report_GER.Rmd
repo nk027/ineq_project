@@ -1,0 +1,117 @@
+---
+title: "Einkommensverteilung in Österreich"
+subtitle: "2063 - Ökonomie der Verteilung"
+author: "Nikolas Kuschnig & Casper Engelen"
+abstract: "Dieses Dokument stellt einige Funktionen von Rmarkdown vor und bietet eine simple Grundstruktur für Länder-Reports."
+keywords: "a, b, c"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: 
+  pdf_document:
+    toc: true
+    includes: 
+      in_header: header.tex
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+# Rmarkdown Demonstration
+
+```{r, include=FALSE}
+cat("Ausgeführt, nichts angezeigt")
+```
+
+```{r, eval=FALSE}
+cat("Nicht ausgeführt, angezeigt")
+```
+
+```{r echo=FALSE}
+cat("Ausgeführt, Output angezeigt")
+```
+
+```{r}
+cat("Ausgeführt, alles angezeigt")
+```
+
+<!-- Kommentare im Dokument -->
+
+Text *kursiv* und **fett**.
+
+R-Code im Text: `r pi`
+
+LaTeX Formeln inline: ($e = mc^2$) und:
+
+$$\hat{\beta} = (X'X)^{-1}X'Y$$
+
+![Bilder einfügen (xkcd)](img/xkcd_comparison.png){width=60%}
+
+[Links einfügen (Bildquelle)](https://what-if.xkcd.com/118/)
+
+Zitieren aus *BibTeX*:
+
+- [@marmot2010fair; @lancee2012income]
+- [@humer2013bedeutung, p. 571]
+- @humer2013bedeutung
+
+Block-Zitate:
+
+> "Don't quote me on that."
+
+Ungeordnete Listen:
+
+- Einkommen
+- Kapital
+
+Geordnete Listen:
+
+1. Zahlen
+3. sind
+9. egal
+
+Simple Tabellen:
+<!-- Leerzeichen sind egal -->
+
+|Country  | Gini  | Theil | QSR |
+| ---     | ---   | ---   | --- |
+| AUT     | 1     | 0.5   | NA  |
+
+R-Plots:
+
+```{r fig-rnorm, echo=FALSE, fig.cap="Inklusive Optionen", fig.width=4}
+plot(rnorm(50), rnorm(50))
+```
+
+Potentiell weniger simple Tabellen:
+
+```{r echo=FALSE, }
+# Read CSV data, "../../" to look two levels upwards
+table <- read.csv("tables/_template-table.csv")
+knitr::kable(table, caption = "Mit Optionen")
+```
+
+Horizontale Linien:
+
+---
+
+\newpage
+
+# Einführung
+
+# Methodologie
+
+## Daten
+
+## Indikatoren
+
+# Ergebnisse
+
+# Zusammenfassung
+
+
+# Literatur
+
+<!-- Leer lassen -->
